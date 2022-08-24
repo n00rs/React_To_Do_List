@@ -1,23 +1,23 @@
 import React from 'react'
 
-function Form({ todoInput, setTodoInput, todos, setTodos }) {
+function Form({ todoInput, setTodoInput, todos, setTodos, setStatus }) {
 
-    const TodoInput = (e) => {
-        setTodoInput(e.target.value);
+    const TodoInput = (e) =>  setTodoInput(e.target.value)
         // setToDoInput = e.target.value
-    }
+    
 
     const submitTodo = (e) => {
-        console.log(`inside subit`);
+        // console.log(`inside subit`);
         e.preventDefault();
         setTodos([
             ...todos,
             { todo: todoInput, status: false, id: Date.now() }
         ])
         setTodoInput("")
-
     }
 
+    const checkStatus = (e)=>  setStatus(e.target.value)
+    
 
     return (
         <div>
@@ -27,7 +27,7 @@ function Form({ todoInput, setTodoInput, todos, setTodos }) {
                     <i className="fas fa-plus-square"></i>
                 </button>
                 <div className="select">
-                    <select name="todos" className="filter-todo">
+                    <select onChange={checkStatus} name="todos" className="filter-todo">
                         <option value="all">All</option>
                         <option value="completed">Completed</option>
                         <option value="uncompleted">Uncompleted</option>

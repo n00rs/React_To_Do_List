@@ -1,20 +1,21 @@
 import React from 'react'
 import Todo from './Todo'
 
-function TodoList({todos}) {
-  return (
-    <div className='todo-container'>
-        <ul className='todo-list'>
-            {
-                todos.map((obj) => {
-                    <Todo todos = {...obj} />
-                })
-            }
+function TodoList({ setTodos, todos, filteredTodos }) {
+    return (
+        <div className='todo-container'>
+            <ul className='todo-list'>
+                {
+                    filteredTodos.map((todo) => (
+                        <Todo {...todo} setTodos={setTodos} todoArray={todos} />
+                        // return null
+                    ))
+                }
 
-        </ul>
+            </ul>
 
-    </div>
-  )
+        </div>
+    )
 }
 
 export default TodoList

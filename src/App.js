@@ -7,17 +7,20 @@ import To_do_header from './components/To_do_header';
 
 
 function App() {
+
   const [todoInput, setTodoInput] = useState("")
   const [todos, setTodos] = useState([])
   const [status, setStatus] = useState('all')
   const [filteredTodo, setFilteredTodo] = useState([]);
 
 
+useEffect(()=> fetchLocal(), [])
 
   useEffect(() => {
-    console.log('inside use effect');
-filtering()
-  }, [todos,status])
+    // console.log('inside use effect');
+     filtering()
+     saveInLocal()
+  }, [todos, status])
 
 
 
@@ -38,7 +41,22 @@ filtering()
     }
   }
 
-
+  const saveInLocal = () => {
+    console.log('inxside save');
+    if(todos.length>0)
+    localStorage.setItem('todos', JSON.stringify(todos))
+  }
+  const fetchLocal = () => {
+    if (localStorage.getItem('todos') === null){
+      console.log('inside if');
+      localStorage.setItem('todos', JSON.stringify([]))
+    }else{
+      console.log('ind=side ');
+      let localStore = JSON.parse(localStorage.getItem('todos'))
+      setTodos(localStore)
+    }
+      // setTodos( JSON.parse( localStorage.getItem('todos')))
+  }
 
 
   let obj = { todoInput, setTodoInput, todos, setTodos, setStatus };

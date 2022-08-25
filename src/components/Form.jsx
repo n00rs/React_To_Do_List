@@ -2,9 +2,9 @@ import React from 'react'
 
 function Form({ todoInput, setTodoInput, todos, setTodos, setStatus }) {
 
-    const TodoInput = (e) =>  setTodoInput(e.target.value)
-        // setToDoInput = e.target.value
-    
+    const TodoInput = (e) => setTodoInput(e.target.value)
+    // setToDoInput = e.target.value
+
 
     const submitTodo = (e) => {
         // console.log(`inside subit`);
@@ -16,8 +16,8 @@ function Form({ todoInput, setTodoInput, todos, setTodos, setStatus }) {
         setTodoInput("")
     }
 
-    const checkStatus = (e)=>  setStatus(e.target.value)
-    
+    const checkStatus = (e) => setStatus(e.target.value)
+
 
     return (
         <div>

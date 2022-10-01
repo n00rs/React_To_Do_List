@@ -42,16 +42,14 @@ useEffect(()=> fetchLocal(), [])
   }
 
   const saveInLocal = () => {
-    console.log('inxside save');
     if(todos.length>0)
     localStorage.setItem('todos', JSON.stringify(todos))
   }
   const fetchLocal = () => {
     if (localStorage.getItem('todos') === null){
-      console.log('inside if');
+      
       localStorage.setItem('todos', JSON.stringify([]))
     }else{
-      console.log('ind=side ');
       let localStore = JSON.parse(localStorage.getItem('todos'))
       setTodos(localStore)
     }
